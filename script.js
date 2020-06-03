@@ -6,50 +6,81 @@
 // BONUS: all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali.
 // Con difficoltà 0=> tra 1 e 100, con difficoltà 1 => tra 1 e 80, con difficoltà 2=> tra 1 e 50
 
-// Generiamo 16 numeri casuali tra 1 e 100
-var z = 0;
-
-arrayNumeri = [];
-
-
-while (z < 16 ) {
-  var numeroRandom = getRndInteger(1, 100);
-  console.log(numeroRandom);
-  function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-  }
-  arrayNumeri.push(numeroRandom);
-  z++;
+// Facciamo scegliere il livello di difficoltà tra "facile" , "normale" , "difficile"
+var livelloDiDifficoltà = prompt("Scegli il livello di difficolta tra facile, normale, difficile");
+switch (livelloDiDifficoltà) {
+  case 'facile':
+    num2 = 100;
+    break;
+  case 'normale':
+    num2 = 80;
+    break;
+  case 'difficile':
+    num2 = 50;
+    break;
 }
+// Dichiaro le variabili che fungeranno da attributi per la funzione 'pusha' che genera i numeri casuali
+var num1 = 1;
+var num2;
+
+// Generiamo 16 numeri casuali tra 1 e 100
+// Creo un array dove inserire i 16 numeri
+arrayNumeri = [];
+console.log(arrayNumeri);
+
+var contRandom = 0;
+while (contRandom < 16 ) {
+  pusha();
+  contRandom++;
+}
+
 
 // Chiediamo all utente un numero tra 1 e 100
 var condizione = false;
 
-var y = 0;
-while (y < 85 && condizione == false) {
-  // console.log("sono entrato");
+var contUtente = 0;
+while (contUtente <= 84 && condizione == false) {
   var numeroUtente = prompt("Dimmi un numero");
   controllo(numeroUtente);
-  y++;
+  contUtente++;
 }
 
+// Verifichiamo se l utente ha vinto/perso e restituiamo un messaggio
 if (condizione == true) {
   var messaggio = 'Il gioco e finito';
 }
-else if (y>=85) {
+else if (contUtente >= 85) {
   var messaggio = 'Hai vinto';
 }
 
-6console.log(messaggio);
+console.log(messaggio);
 
+// Funzioni
+
+// Funzione che controlla che il numero inserito dall utente corrisponda a quelli generati dal computer
 function controllo(numero) {
   var i = 0;
   while (i < 85) {
     if (arrayNumeri[i] == numero) {
-      console.log('HAI BECCATO UNA BOMBA');
       condizione = true;
-      console.log("Sei riuscito a fare " + y + " tentativi");
+      console.log("Hai preso una bomba! Sei riuscito a fare " + contUtente + " tentativi");
     }
   i++;
+  }
+}
+
+// Funzione che genera numeri random
+function getRndInteger(min, max) {
+return Math.floor(Math.random() * (max - min)) + min;
+}
+
+// Funzione che pusha numeri all interno dell array e verifica che non ci siano doppioni
+function pusha() {
+  var numeroRandom = getRndInteger(num1, num2);
+  if (!(arrayNumeri.includes(numeroRandom))) {
+    arrayNumeri.push(numeroRandom);
+  }
+  else {
+    return pusha();
   }
 }
