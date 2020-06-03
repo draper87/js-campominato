@@ -7,19 +7,49 @@
 // Con difficoltà 0=> tra 1 e 100, con difficoltà 1 => tra 1 e 80, con difficoltà 2=> tra 1 e 50
 
 // Generiamo 16 numeri casuali tra 1 e 100
-i = 0;
+var z = 0;
 
 arrayNumeri = [];
-console.log(arrayNumeri);
 
-while (i < 16 ) {
+
+while (z < 16 ) {
   var numeroRandom = getRndInteger(1, 100);
   console.log(numeroRandom);
   function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
   }
   arrayNumeri.push(numeroRandom);
-  i++;
+  z++;
 }
 
 // Chiediamo all utente un numero tra 1 e 100
+var condizione = false;
+
+var y = 0;
+while (y < 85 && condizione == false) {
+  // console.log("sono entrato");
+  var numeroUtente = prompt("Dimmi un numero");
+  controllo(numeroUtente);
+  y++;
+}
+
+if (condizione == true) {
+  var messaggio = 'Il gioco e finito';
+}
+else if (y>=85) {
+  var messaggio = 'Hai vinto';
+}
+
+6console.log(messaggio);
+
+function controllo(numero) {
+  var i = 0;
+  while (i < 85) {
+    if (arrayNumeri[i] == numero) {
+      console.log('HAI BECCATO UNA BOMBA');
+      condizione = true;
+      console.log("Sei riuscito a fare " + y + " tentativi");
+    }
+  i++;
+  }
+}
