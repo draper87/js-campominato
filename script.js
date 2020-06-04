@@ -6,8 +6,18 @@
 // BONUS: all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali.
 // Con difficoltà 0=> tra 1 e 100, con difficoltà 1 => tra 1 e 80, con difficoltà 2=> tra 1 e 50
 
+// Dichiaro le variabili che fungeranno da attributi per la funzione 'pusha' che genera i numeri casuali
+var num1 = 1;
+var num2 = 100;
+
 // Facciamo scegliere il livello di difficoltà tra "facile" , "normale" , "difficile"
 var livelloDiDifficoltà = prompt("Scegli il livello di difficolta tra facile, normale, difficile");
+
+// Verifico che l utente inserisca solamente le 3 possibili varianti di difficolta altrimenti faccio ripetere
+while (livelloDiDifficoltà != 'facile' && livelloDiDifficoltà != 'normale' && livelloDiDifficoltà != 'difficile' ) {
+  livelloDiDifficoltà = prompt("Scegli il livello di difficolta tra facile, normale, difficile");
+}
+
 switch (livelloDiDifficoltà) {
   case 'facile':
     num2 = 100;
@@ -19,13 +29,6 @@ switch (livelloDiDifficoltà) {
     num2 = 50;
     break;
 }
-// Verifico che l utente inserisca solamente le 3 possibili varianti di difficolta altrimenti faccio ripetere
-while (livelloDiDifficoltà != 'facile' && livelloDiDifficoltà != 'normale' && livelloDiDifficoltà != 'difficile' ) {
-  livelloDiDifficoltà = prompt("Scegli il livello di difficolta tra facile, normale, difficile");
-}
-// Dichiaro le variabili che fungeranno da attributi per la funzione 'pusha' che genera i numeri casuali
-var num1 = 1;
-var num2;
 
 // Generiamo 16 numeri casuali tra 1 e 100
 // Creo un array dove inserire i 16 numeri
@@ -34,7 +37,7 @@ console.log(arrayNumeri);
 
 var contRandom = 0;
 while (contRandom < 16 ) {
-  pusha();
+  pusha(); //lancio la funzione che mi pusha i numeri all interno della array
   contRandom++;
 }
 
@@ -77,7 +80,7 @@ function controllo(numero) {
 
 // Funzione che genera numeri random
 function getRndInteger(min, max) {
-return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 // Funzione che pusha numeri all interno dell array e verifica che non ci siano doppioni
