@@ -6,7 +6,7 @@
 // BONUS: all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali.
 // Con difficoltà 0=> tra 1 e 100, con difficoltà 1 => tra 1 e 80, con difficoltà 2=> tra 1 e 50
 
-// Dichiaro le variabili che fungeranno da attributi per la funzione 'pusha' che genera i numeri casuali
+// Dichiaro le variabili che fungeranno da attributi per la funzione che genera i numeri casuali
 var num1 = 1;
 var num2 = 100;
 
@@ -18,19 +18,20 @@ while (livelloDiDifficoltà != 'facile' && livelloDiDifficoltà != 'normale' && 
   livelloDiDifficoltà = prompt("Scegli il livello di difficolta tra facile, normale, difficile");
 }
 
+// In base alla difficolta scelta vado a impostare gli attributi num 1 e num2 che determinano il range nel quale generare i miei numeri
 switch (livelloDiDifficoltà) {
   case 'facile':
-    num2 = 100;
+    num2 = 100; // range tra 1 e 100
     break;
   case 'normale':
-    num2 = 80;
+    num2 = 80; // range tra 1 e 80
     break;
   case 'difficile':
-    num2 = 50;
+    num2 = 50; // range tra 1 e 50
     break;
 }
 
-// Generiamo 16 numeri casuali tra 1 e 100
+// Generiamo 16 numeri casuali tra 1 e un numero scelto dall utente
 // Creo un array dove inserire i 16 numeri
 arrayNumeri = [];
 console.log(arrayNumeri);
