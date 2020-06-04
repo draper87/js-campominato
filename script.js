@@ -19,6 +19,10 @@ switch (livelloDiDifficoltà) {
     num2 = 50;
     break;
 }
+// Verifico che l utente inserisca solamente le 3 possibili varianti di difficolta altrimenti faccio ripetere
+while (livelloDiDifficoltà != 'facile' && livelloDiDifficoltà != 'normale' && livelloDiDifficoltà != 'difficile' ) {
+  livelloDiDifficoltà = prompt("Scegli il livello di difficolta tra facile, normale, difficile");
+}
 // Dichiaro le variabili che fungeranno da attributi per la funzione 'pusha' che genera i numeri casuali
 var num1 = 1;
 var num2;
@@ -34,13 +38,15 @@ while (contRandom < 16 ) {
   contRandom++;
 }
 
-
 // Chiediamo all utente un numero tra 1 e 100
 var condizione = false;
 
 var contUtente = 0;
 while (contUtente <= 84 && condizione == false) {
   var numeroUtente = prompt("Dimmi un numero");
+  while (isNaN(numeroUtente)) { // verifico che l utente inserisca un numero e non altri caratteri
+    numeroUtente = prompt("Dimmi un numero");
+  }
   controllo(numeroUtente);
   contUtente++;
 }
